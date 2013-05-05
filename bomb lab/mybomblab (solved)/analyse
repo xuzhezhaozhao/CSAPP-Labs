@@ -1,0 +1,124 @@
+phase_1: 0x80497c0 使用该命令显示内存中的字符串 x/s 0x80497c0
+
+solution: Public speaking is very easy.
+
+phase_2:  	0x804b6d0 保存"%d %d %d %d %d %d"字符串
+ 		0xffffd6a0 中保存的是输入的6个数字的起始位置
+a[n] * (n + 2) = a[n + 1] n=0...5, 且a[0] = 1
+
+solution: 1 2 6 24 120 720
+
+
+phase_3:	0x80497de 保存"%d %c %d"
+jmp    *0x80497e8(,%eax,4)  switch 语句,指针的值为 0x80497e8+4*$eax
+%eax中保存的是第一个数字,  0-7
+$bl 第二个字符
+($ebp)-0x4 第三个数字
+0-7所有的情况.
+
+solution:
+0 q 777
+1 b 214
+2 b 755
+3 k 251
+4 o 160
+5 t 458
+6 v 780
+7 b 524
+
+phase_4:	0x8049808:	 "%d"
+($ebp)-4中保存读入的数
+递归函数fun4的返回值应该等于0x37 (55)
+int func4(int num)
+{
+	if (num <= 1) {
+		return 1;
+	} else {
+		return func(num-1)+func(num-2);	
+	}
+}
+求得num = 9
+
+solution: 9
+
+phase_5:	table 的地址 0x804b220, 表中有16个字符,isrveawhobpnutfg
+输入的字符串为6个字符,6个字符的低4位对应为偏移量(0-f),
+由偏移从表中得到新的字符串应该为"giants","giants"存放位置为0x804980b.
+则得到偏移量应该为 f 0 5 b d 1
+则字符串有多种情况,只要满足低4位为 f 0 5 b d 1 的顺序就可以
+
+solution;
+如: 	OPUKMQ
+	/ %+-Q
+
+phase_6:	
+movl   $0x804b26c,-0x34(%ebp)  0x804b26c是一个已经有了的链表的第一个结点的位置,其数据域为0x000000fd
+程序要做的是根据输入的6个不同大小的数字(1-6)来重新排列这个链表使其按降序排列
+$ebp-0x3c保存的是初始链表的头指针,链表的数据元素是个结构体,
+struct LElement {
+	unsigned int data;
+	struct LElement *next;
+}
+%esi 寄存器是用来传递指针的,把握住它的值这个程序就好读一些.
+%eiz 是个伪寄存器,其值永远为0
+输入的数字与对应产生的指针如下:
+ 1 -> 0x804b26c -> fd
+ 2 -> 0x804b260 -> 2d5
+ 3 -> 0x804b254 -> 12d
+ 4 -> 0x804b248 -> 3e5
+ 5 -> 0x804b23c -> d4
+ 6 -> 0x804b230 -> 1b0
+
+按输入的顺序生成链表
+6个指针:
+0xffffd678:	p[0]
+0xffffd67c:	p[1]
+0xffffd680:	p[2]
+0xffffd684:	p[3]
+0xffffd688:	p[4]
+0xffffd68c:	p[5]
+由最后的循环来看,是判断链表是否为降序排列
+有	*p[0] > *p[1] > *p[2] ... > *p[5]
+则有    3e5 > 2d5 > 1b0 > 12d > fd > d4
+对应数字顺序为: 4 2 6 3 1 5	
+
+solution: 4 2 6 3 1 5
+
+
+secret_phase:	在phase_defused函数中有cmpl $0x6, 0x804b480 语句,搜索0x804b480
+发现这个内存的值在每读入一条字符串后就会加1,则显然secret_phase是在第6条字符串之后输入.
+又发现cmp $0x2, %eax,语句, 此时的%eax是sscanf读取的参数个数,sscanf读取的参数格式保存在
+之前push的0x8049d03位置处,为"%d %s", 待读取的参数存放在最后push的0x804b770内存处,问题就在
+这里了,用x/s 0x804b770看时发现这个内存位置的字符串为"9",明显不对,从后面的调用
+strings_not_equal来看,还要读入的字符保存在0x8049d09中,应该为"austinpowers".下面
+的问题就是要把这个字符串存放在0x804b774位置处,非常tricky的就是当我们逐个断点观察每个
+read_line函数的时候,发现读入第4条字符串9的位置正好是0x804b770,于是我们要在第4条字符串9后
+加上字符串"austinpowers",这样就可以正确执行到secret_phase函数调用位置处了.真是辛苦啊!
+
+下面是解析secret_phase, 不难分析到函数是先将字符串转换成整数,并且其值<=1001再调用func7函数,
+根据后面的分析,返回值要为0x07, 则可得参数value.
+typedef struct BiTree {
+	int data;
+	BiTree *lchild;
+	BiTree *rchild;
+}BiTree;
+
+/* p指向树的头结点, 树结构如下 */
+				36
+	8 						50
+6 		22 			45 			107
+	20 		35 	40 		47 	99 		1001
+int func7(int value, BiTree *p)
+{
+	if (NULL == p) {
+		return -1;
+	} else if (value < p->data) {
+		return 2 * func7(value, p->lchild);	
+	} else {
+		if (value == p->data) {
+			return 0;
+		} else {
+			return 2 * func(value, p->rchild) + 1;
+		}
+	}
+}

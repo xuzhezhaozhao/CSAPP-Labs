@@ -1,0 +1,6 @@
+bomblab.pdf: 实验描述
+analyse: 做的过程中的分析过程.
+bomb: 二进制文件
+bomb.s: 用objdump得到的bomb的反汇编代码
+bomb.vim: 用vim打开bomb.s的会话文件,可以忽略
+phase: 得到的字符串,包含secret_phase
