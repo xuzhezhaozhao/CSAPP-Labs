@@ -1,0 +1,91 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BG	tsh.c	25;"	d	file:
+CC	Makefile	/^CC = gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS = -Wall -O2$/;"	m
+DRIVER	Makefile	/^DRIVER = .\/sdriver.pl$/;"	m
+FG	tsh.c	24;"	d	file:
+FILES	Makefile	/^FILES = $(TSH) .\/myspin .\/mysplit .\/mystop .\/myint$/;"	m
+HANDINDIR	Makefile	/^HANDINDIR = \/afs\/cs\/academic\/class\/15213-f02\/L5\/handin$/;"	m
+MAXARGS	tsh.c	18;"	d	file:
+MAXJID	tsh.c	20;"	d	file:
+MAXJOBS	tsh.c	19;"	d	file:
+MAXLINE	tsh.c	17;"	d	file:
+ST	tsh.c	26;"	d	file:
+Signal	tsh.c	/^handler_t *Signal(int signum, handler_t *handler) $/;"	f	signature:(int signum, handler_t *handler)
+Signal	tsh.c	/^handler_t *Signal(int signum, handler_t *handler);$/;"	p	file:	signature:(int signum, handler_t *handler)
+TEAM	Makefile	/^TEAM = NOBODY$/;"	m
+TSH	Makefile	/^TSH = .\/tsh$/;"	m
+TSHARGS	Makefile	/^TSHARGS = "-p"$/;"	m
+TSHREF	Makefile	/^TSHREF = .\/tshref$/;"	m
+UNDEF	tsh.c	23;"	d	file:
+VERSION	Makefile	/^VERSION = 1$/;"	m
+addjob	tsh.c	/^int addjob(struct job_t *jobs, pid_t pid, int state, char *cmdline) $/;"	f	signature:(struct job_t *jobs, pid_t pid, int state, char *cmdline)
+addjob	tsh.c	/^int addjob(struct job_t *jobs, pid_t pid, int state, char *cmdline);$/;"	p	file:	signature:(struct job_t *jobs, pid_t pid, int state, char *cmdline)
+app_error	tsh.c	/^void app_error(char *msg)$/;"	f	signature:(char *msg)
+app_error	tsh.c	/^void app_error(char *msg);$/;"	p	file:	signature:(char *msg)
+builtin_cmd	tsh.c	/^int builtin_cmd(char **argv) $/;"	f	signature:(char **argv)
+builtin_cmd	tsh.c	/^int builtin_cmd(char **argv);$/;"	p	file:	signature:(char **argv)
+clearjob	tsh.c	/^void clearjob(struct job_t *job) {$/;"	f	signature:(struct job_t *job)
+clearjob	tsh.c	/^void clearjob(struct job_t *job);$/;"	p	file:	signature:(struct job_t *job)
+cmdline	tsh.c	/^    char cmdline[MAXLINE];  \/* command line *\/$/;"	m	struct:job_t	file:	access:public
+deletejob	tsh.c	/^int deletejob(struct job_t *jobs, pid_t pid) $/;"	f	signature:(struct job_t *jobs, pid_t pid)
+deletejob	tsh.c	/^int deletejob(struct job_t *jobs, pid_t pid); $/;"	p	file:	signature:(struct job_t *jobs, pid_t pid)
+do_bgfg	tsh.c	/^void do_bgfg(char **argv) $/;"	f	signature:(char **argv)
+do_bgfg	tsh.c	/^void do_bgfg(char **argv);$/;"	p	file:	signature:(char **argv)
+eval	tsh.c	/^void eval(char *cmdline) $/;"	f	signature:(char *cmdline)
+eval	tsh.c	/^void eval(char *cmdline);$/;"	p	file:	signature:(char *cmdline)
+fgpid	tsh.c	/^pid_t fgpid(struct job_t *jobs) {$/;"	f	signature:(struct job_t *jobs)
+fgpid	tsh.c	/^pid_t fgpid(struct job_t *jobs);$/;"	p	file:	signature:(struct job_t *jobs)
+getjobjid	tsh.c	/^struct job_t *getjobjid(struct job_t *jobs, int jid) $/;"	f	signature:(struct job_t *jobs, int jid)
+getjobjid	tsh.c	/^struct job_t *getjobjid(struct job_t *jobs, int jid); $/;"	p	file:	signature:(struct job_t *jobs, int jid)
+getjobpid	tsh.c	/^struct job_t *getjobpid(struct job_t *jobs, pid_t pid) {$/;"	f	signature:(struct job_t *jobs, pid_t pid)
+getjobpid	tsh.c	/^struct job_t *getjobpid(struct job_t *jobs, pid_t pid);$/;"	p	file:	signature:(struct job_t *jobs, pid_t pid)
+handler_t	tsh.c	/^typedef void handler_t(int);$/;"	t	file:
+initjobs	tsh.c	/^void initjobs(struct job_t *jobs) {$/;"	f	signature:(struct job_t *jobs)
+initjobs	tsh.c	/^void initjobs(struct job_t *jobs);$/;"	p	file:	signature:(struct job_t *jobs)
+jid	tsh.c	/^    int jid;                \/* job ID [1, 2, ...] *\/$/;"	m	struct:job_t	file:	access:public
+job_t	tsh.c	/^struct job_t {              \/* The job struct *\/$/;"	s	file:
+job_t::cmdline	tsh.c	/^    char cmdline[MAXLINE];  \/* command line *\/$/;"	m	struct:job_t	file:	access:public
+job_t::jid	tsh.c	/^    int jid;                \/* job ID [1, 2, ...] *\/$/;"	m	struct:job_t	file:	access:public
+job_t::pid	tsh.c	/^    pid_t pid;              \/* job PID *\/$/;"	m	struct:job_t	file:	access:public
+job_t::state	tsh.c	/^    int state;              \/* UNDEF, BG, FG, or ST *\/$/;"	m	struct:job_t	file:	access:public
+jobs	tsh.c	/^struct job_t jobs[MAXJOBS]; \/* The job list *\/$/;"	v	typeref:struct:job_t
+listjobs	tsh.c	/^void listjobs(struct job_t *jobs) $/;"	f	signature:(struct job_t *jobs)
+listjobs	tsh.c	/^void listjobs(struct job_t *jobs);$/;"	p	file:	signature:(struct job_t *jobs)
+main	myint.c	/^int main(int argc, char **argv) $/;"	f	signature:(int argc, char **argv)
+main	myspin.c	/^int main(int argc, char **argv) $/;"	f	signature:(int argc, char **argv)
+main	mysplit.c	/^int main(int argc, char **argv) $/;"	f	signature:(int argc, char **argv)
+main	mystop.c	/^int main(int argc, char **argv) $/;"	f	signature:(int argc, char **argv)
+main	tsh.c	/^int main(int argc, char **argv) $/;"	f	signature:(int argc, char **argv)
+maxjid	tsh.c	/^int maxjid(struct job_t *jobs) $/;"	f	signature:(struct job_t *jobs)
+maxjid	tsh.c	/^int maxjid(struct job_t *jobs); $/;"	p	file:	signature:(struct job_t *jobs)
+nextjid	tsh.c	/^int nextjid = 1;            \/* next job ID to allocate *\/$/;"	v
+parseline	tsh.c	/^int parseline(const char *cmdline, char **argv) $/;"	f	signature:(const char *cmdline, char **argv)
+parseline	tsh.c	/^int parseline(const char *cmdline, char **argv); $/;"	p	file:	signature:(const char *cmdline, char **argv)
+pid	tsh.c	/^    pid_t pid;              \/* job PID *\/$/;"	m	struct:job_t	file:	access:public
+pid2jid	tsh.c	/^int pid2jid(pid_t pid) $/;"	f	signature:(pid_t pid)
+pid2jid	tsh.c	/^int pid2jid(pid_t pid); $/;"	p	file:	signature:(pid_t pid)
+prompt	tsh.c	/^char prompt[] = "tsh> ";    \/* command line prompt (DO NOT CHANGE) *\/$/;"	v
+sbuf	tsh.c	/^char sbuf[MAXLINE];         \/* for composing sprintf messages *\/$/;"	v
+sigchld_handler	tsh.c	/^void sigchld_handler(int sig) $/;"	f	signature:(int sig)
+sigchld_handler	tsh.c	/^void sigchld_handler(int sig);$/;"	p	file:	signature:(int sig)
+sigint_handler	tsh.c	/^void sigint_handler(int sig) $/;"	f	signature:(int sig)
+sigint_handler	tsh.c	/^void sigint_handler(int sig);$/;"	p	file:	signature:(int sig)
+sigquit_handler	tsh.c	/^void sigquit_handler(int sig) $/;"	f	signature:(int sig)
+sigquit_handler	tsh.c	/^void sigquit_handler(int sig);$/;"	p	file:	signature:(int sig)
+sigtstp_handler	tsh.c	/^void sigtstp_handler(int sig) $/;"	f	signature:(int sig)
+sigtstp_handler	tsh.c	/^void sigtstp_handler(int sig);$/;"	p	file:	signature:(int sig)
+state	tsh.c	/^    int state;              \/* UNDEF, BG, FG, or ST *\/$/;"	m	struct:job_t	file:	access:public
+unix_error	tsh.c	/^void unix_error(char *msg)$/;"	f	signature:(char *msg)
+unix_error	tsh.c	/^void unix_error(char *msg);$/;"	p	file:	signature:(char *msg)
+usage	sdriver.pl	/^sub usage $/;"	s
+usage	tsh.c	/^void usage(void) $/;"	f	signature:(void)
+usage	tsh.c	/^void usage(void);$/;"	p	file:	signature:(void)
+verbose	tsh.c	/^int verbose = 0;            \/* if true, print additional output *\/$/;"	v
+waitfg	tsh.c	/^void waitfg(pid_t pid)$/;"	f	signature:(pid_t pid)
+waitfg	tsh.c	/^void waitfg(pid_t pid);$/;"	p	file:	signature:(pid_t pid)
