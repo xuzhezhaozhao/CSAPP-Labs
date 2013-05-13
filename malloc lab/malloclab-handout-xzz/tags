@@ -1,0 +1,242 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ALIGN	mm.c	42;"	d	file:
+ALIGNMENT	config.h	58;"	d
+ALIGNMENT	mm.c	39;"	d	file:
+ALLOC	mdriver.c	/^    enum {ALLOC, FREE, REALLOC} type; \/* type of request *\/$/;"	e	enum:__anon1::__anon2	file:
+AVG_LIBC_THRUPUT	config.h	46;"	d
+CACHE_BLOCK	fcyc.c	24;"	d	file:
+CACHE_BYTES	fcyc.c	23;"	d	file:
+CC	Makefile	/^CC = gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS = -Wall -O2 -m32$/;"	m
+CLEAR_CACHE	fcyc.c	22;"	d	file:
+COMPENSATE	fcyc.c	21;"	d	file:
+DEFAULT_TRACEFILES	config.h	24;"	d
+EPSILON	fcyc.c	20;"	d	file:
+FREE	mdriver.c	/^    enum {ALLOC, FREE, REALLOC} type; \/* type of request *\/$/;"	e	enum:__anon1::__anon2	file:
+HANDINDIR	Makefile	/^HANDINDIR = \/afs\/cs.cmu.edu\/academic\/class\/15213-f01\/malloclab\/handin$/;"	m
+HDRLINES	mdriver.c	30;"	d	file:
+IS_ALIGNED	mdriver.c	34;"	d	file:
+K	fcyc.c	18;"	d	file:
+KEEP_SAMPLES	fcyc.c	41;"	d	file:
+KEEP_VALS	fcyc.c	40;"	d	file:
+LINENUM	mdriver.c	31;"	d	file:
+MAXLINE	mdriver.c	29;"	d	file:
+MAXSAMPLES	fcyc.c	19;"	d	file:
+MAX_ETIME	ftimer.c	61;"	d	file:
+MAX_HEAP	config.h	63;"	d
+Mhz	fsecs.c	/^static double Mhz;  \/* estimated CPU clock frequency *\/$/;"	v	file:
+NEVENT	clock.c	208;"	d	file:
+OBJS	Makefile	/^OBJS = mdriver.o mm.o memlib.o fsecs.o fcyc.o clock.o ftimer.o$/;"	m
+REALLOC	mdriver.c	/^    enum {ALLOC, FREE, REALLOC} type; \/* type of request *\/$/;"	e	enum:__anon1::__anon2	file:
+RECORDTHRESH	clock.c	210;"	d	file:
+SIZE_T_SIZE	mm.c	45;"	d	file:
+TEAM	Makefile	/^TEAM = bovik$/;"	m
+THRESHOLD	clock.c	209;"	d	file:
+TRACEDIR	config.h	15;"	d
+USE_FCYC	config.h	68;"	d
+USE_GETTOD	config.h	70;"	d
+USE_ITIMER	config.h	69;"	d
+UTIL_WEIGHT	config.h	53;"	d
+VERSION	Makefile	/^VERSION = 1$/;"	m
+__CONFIG_H_	config.h	2;"	d
+__anon1::ALLOC	mdriver.c	/^    enum {ALLOC, FREE, REALLOC} type; \/* type of request *\/$/;"	e	enum:__anon1::__anon2	file:
+__anon1::FREE	mdriver.c	/^    enum {ALLOC, FREE, REALLOC} type; \/* type of request *\/$/;"	e	enum:__anon1::__anon2	file:
+__anon1::REALLOC	mdriver.c	/^    enum {ALLOC, FREE, REALLOC} type; \/* type of request *\/$/;"	e	enum:__anon1::__anon2	file:
+__anon1::index	mdriver.c	/^    int index;                        \/* index for free() to use later *\/$/;"	m	struct:__anon1	file:	access:public
+__anon1::size	mdriver.c	/^    int size;                         \/* byte size of alloc\/realloc request *\/$/;"	m	struct:__anon1	file:	access:public
+__anon1::type	mdriver.c	/^    enum {ALLOC, FREE, REALLOC} type; \/* type of request *\/$/;"	m	struct:__anon1	typeref:enum:__anon1::__anon2	file:	access:public
+__anon3::block_sizes	mdriver.c	/^    size_t *block_sizes; \/* ... and a corresponding array of payload sizes *\/$/;"	m	struct:__anon3	file:	access:public
+__anon3::blocks	mdriver.c	/^    char **blocks;       \/* array of ptrs returned by malloc\/realloc... *\/$/;"	m	struct:__anon3	file:	access:public
+__anon3::num_ids	mdriver.c	/^    int num_ids;         \/* number of alloc\/realloc ids *\/$/;"	m	struct:__anon3	file:	access:public
+__anon3::num_ops	mdriver.c	/^    int num_ops;         \/* number of distinct requests *\/$/;"	m	struct:__anon3	file:	access:public
+__anon3::ops	mdriver.c	/^    traceop_t *ops;      \/* array of requests *\/$/;"	m	struct:__anon3	file:	access:public
+__anon3::sugg_heapsize	mdriver.c	/^    int sugg_heapsize;   \/* suggested heap size (unused) *\/$/;"	m	struct:__anon3	file:	access:public
+__anon3::weight	mdriver.c	/^    int weight;          \/* weight for this trace (unused) *\/$/;"	m	struct:__anon3	file:	access:public
+__anon4::ranges	mdriver.c	/^    range_t *ranges;$/;"	m	struct:__anon4	file:	access:public
+__anon4::trace	mdriver.c	/^    trace_t *trace;  $/;"	m	struct:__anon4	file:	access:public
+__anon5::ops	mdriver.c	/^    double ops;      \/* number of ops (malloc\/free\/realloc) in the trace *\/$/;"	m	struct:__anon5	file:	access:public
+__anon5::secs	mdriver.c	/^    double secs;     \/* number of secs needed to run the trace *\/$/;"	m	struct:__anon5	file:	access:public
+__anon5::util	mdriver.c	/^    double util;     \/* space utilization for this trace (always 0 for libc) *\/$/;"	m	struct:__anon5	file:	access:public
+__anon5::valid	mdriver.c	/^    int valid;       \/* was the trace processed correctly by the allocator? *\/$/;"	m	struct:__anon5	file:	access:public
+__anon6::id1	mm.h	/^    char *id1;      \/* login ID of first member *\/$/;"	m	struct:__anon6	access:public
+__anon6::id2	mm.h	/^    char *id2;      \/* login ID of second member *\/$/;"	m	struct:__anon6	access:public
+__anon6::name1	mm.h	/^    char *name1;    \/* full name of first member *\/$/;"	m	struct:__anon6	access:public
+__anon6::name2	mm.h	/^    char *name2;    \/* full name of second member (if any) *\/$/;"	m	struct:__anon6	access:public
+__anon6::teamname	mm.h	/^    char *teamname; \/* ID1+ID2 or ID1 *\/$/;"	m	struct:__anon6	access:public
+access_counter	clock.c	/^void access_counter(unsigned *hi, unsigned *lo)$/;"	f	signature:(unsigned *hi, unsigned *lo)
+add_range	mdriver.c	/^static int add_range(range_t **ranges, char *lo, int size, $/;"	f	file:	signature:(range_t **ranges, char *lo, int size, int tracenum, int opnum)
+add_range	mdriver.c	/^static int add_range(range_t **ranges, char *lo, int size, $/;"	p	file:	signature:(range_t **ranges, char *lo, int size, int tracenum, int opnum)
+add_sample	fcyc.c	/^static void add_sample(double val)$/;"	f	file:	signature:(double val)
+app_error	mdriver.c	/^static void app_error(char *msg);$/;"	p	file:	signature:(char *msg)
+app_error	mdriver.c	/^void app_error(char *msg) $/;"	f	signature:(char *msg)
+block_sizes	mdriver.c	/^    size_t *block_sizes; \/* ... and a corresponding array of payload sizes *\/$/;"	m	struct:__anon3	file:	access:public
+blocks	mdriver.c	/^    char **blocks;       \/* array of ptrs returned by malloc\/realloc... *\/$/;"	m	struct:__anon3	file:	access:public
+cache_block	fcyc.c	/^static int cache_block = CACHE_BLOCK;$/;"	v	file:
+cache_buf	fcyc.c	/^static int *cache_buf = NULL;$/;"	v	file:
+cache_bytes	fcyc.c	/^static int cache_bytes = CACHE_BYTES;$/;"	v	file:
+callibrate	clock.c	/^static void callibrate(int verbose)$/;"	f	file:	signature:(int verbose)
+clear	fcyc.c	/^static void clear()$/;"	f	file:
+clear_cache	fcyc.c	/^static int clear_cache = CLEAR_CACHE;$/;"	v	file:
+clear_ranges	mdriver.c	/^static void clear_ranges(range_t **ranges)$/;"	f	file:	signature:(range_t **ranges)
+clear_ranges	mdriver.c	/^static void clear_ranges(range_t **ranges);$/;"	p	file:	signature:(range_t **ranges)
+compensate	fcyc.c	/^static int compensate = COMPENSATE;$/;"	v	file:
+counter	clock.c	/^static unsigned int (*counter)(void)= (void *)counterRoutine;$/;"	v	file:
+counterRoutine	clock.c	/^static unsigned int counterRoutine[] =$/;"	v	file:
+cyc_hi	clock.c	/^static unsigned cyc_hi = 0;$/;"	v	file:
+cyc_lo	clock.c	/^static unsigned cyc_lo = 0;$/;"	v	file:
+cyc_per_tick	clock.c	/^static double cyc_per_tick = 0.0;$/;"	v	file:
+default_tracefiles	mdriver.c	/^static char *default_tracefiles[] = {  $/;"	v	file:
+epsilon	fcyc.c	/^static double epsilon = EPSILON;$/;"	v	file:
+errors	mdriver.c	/^static int errors = 0;  \/* number of errs found when running student malloc *\/$/;"	v	file:
+eval_libc_speed	mdriver.c	/^static void eval_libc_speed(void *ptr)$/;"	f	file:	signature:(void *ptr)
+eval_libc_speed	mdriver.c	/^static void eval_libc_speed(void *ptr);$/;"	p	file:	signature:(void *ptr)
+eval_libc_valid	mdriver.c	/^static int eval_libc_valid(trace_t *trace, int tracenum)$/;"	f	file:	signature:(trace_t *trace, int tracenum)
+eval_libc_valid	mdriver.c	/^static int eval_libc_valid(trace_t *trace, int tracenum);$/;"	p	file:	signature:(trace_t *trace, int tracenum)
+eval_mm_speed	mdriver.c	/^static void eval_mm_speed(void *ptr)$/;"	f	file:	signature:(void *ptr)
+eval_mm_speed	mdriver.c	/^static void eval_mm_speed(void *ptr);$/;"	p	file:	signature:(void *ptr)
+eval_mm_util	mdriver.c	/^static double eval_mm_util(trace_t *trace, int tracenum, range_t **ranges)$/;"	f	file:	signature:(trace_t *trace, int tracenum, range_t **ranges)
+eval_mm_util	mdriver.c	/^static double eval_mm_util(trace_t *trace, int tracenum, range_t **ranges);$/;"	p	file:	signature:(trace_t *trace, int tracenum, range_t **ranges)
+eval_mm_valid	mdriver.c	/^static int eval_mm_valid(trace_t *trace, int tracenum, range_t **ranges) $/;"	f	file:	signature:(trace_t *trace, int tracenum, range_t **ranges)
+eval_mm_valid	mdriver.c	/^static int eval_mm_valid(trace_t *trace, int tracenum, range_t **ranges);$/;"	p	file:	signature:(trace_t *trace, int tracenum, range_t **ranges)
+fcyc	fcyc.c	/^double fcyc(test_funct f, void *argp)$/;"	f	signature:(test_funct f, void *argp)
+fcyc	fcyc.h	/^double fcyc(test_funct f, void* argp);$/;"	p	signature:(test_funct f, void* argp)
+first_p	ftimer.c	/^static struct itimerval first_p; \/* prof time*\/$/;"	v	typeref:struct:itimerval	file:
+first_r	ftimer.c	/^static struct itimerval first_r; \/* real time *\/$/;"	v	typeref:struct:itimerval	file:
+first_u	ftimer.c	/^static struct itimerval first_u; \/* user time *\/$/;"	v	typeref:struct:itimerval	file:
+free_trace	mdriver.c	/^static void free_trace(trace_t *trace);$/;"	p	file:	signature:(trace_t *trace)
+free_trace	mdriver.c	/^void free_trace(trace_t *trace)$/;"	f	signature:(trace_t *trace)
+fsecs	fsecs.c	/^double fsecs(fsecs_test_funct f, void *argp) $/;"	f	signature:(fsecs_test_funct f, void *argp)
+fsecs	fsecs.h	/^double fsecs(fsecs_test_funct f, void *argp);$/;"	p	signature:(fsecs_test_funct f, void *argp)
+fsecs_test_funct	fsecs.h	/^typedef void (*fsecs_test_funct)(void *);$/;"	t
+ftimer_gettod	ftimer.c	/^double ftimer_gettod(ftimer_test_funct f, void *argp, int n)$/;"	f	signature:(ftimer_test_funct f, void *argp, int n)
+ftimer_gettod	ftimer.h	/^double ftimer_gettod(ftimer_test_funct f, void *argp, int n);$/;"	p	signature:(ftimer_test_funct f, void *argp, int n)
+ftimer_itimer	ftimer.c	/^double ftimer_itimer(ftimer_test_funct f, void *argp, int n)$/;"	f	signature:(ftimer_test_funct f, void *argp, int n)
+ftimer_itimer	ftimer.h	/^double ftimer_itimer(ftimer_test_funct f, void *argp, int n);$/;"	p	signature:(ftimer_test_funct f, void *argp, int n)
+ftimer_test_funct	ftimer.h	/^typedef void (*ftimer_test_funct)(void *); $/;"	t
+get_comp_counter	clock.c	/^double get_comp_counter() $/;"	f
+get_comp_counter	clock.h	/^double get_comp_counter();$/;"	p	signature:()
+get_counter	clock.c	/^double get_counter() $/;"	f
+get_counter	clock.c	/^double get_counter()$/;"	f
+get_counter	clock.h	/^double get_counter();$/;"	p	signature:()
+get_etime	ftimer.c	/^static double get_etime(void) {$/;"	f	file:	signature:(void)
+get_etime	ftimer.c	/^static double get_etime(void);$/;"	p	file:	signature:(void)
+has_converged	fcyc.c	/^static int has_converged()$/;"	f	file:
+hi	mdriver.c	/^    char *hi;              \/* high payload address *\/$/;"	m	struct:range_t	file:	access:public
+id1	mm.h	/^    char *id1;      \/* login ID of first member *\/$/;"	m	struct:__anon6	access:public
+id2	mm.h	/^    char *id2;      \/* login ID of second member *\/$/;"	m	struct:__anon6	access:public
+index	mdriver.c	/^    int index;                        \/* index for free() to use later *\/$/;"	m	struct:__anon1	file:	access:public
+init_etime	ftimer.c	/^static void init_etime(void)$/;"	f	file:	signature:(void)
+init_etime	ftimer.c	/^static void init_etime(void);$/;"	p	file:	signature:(void)
+init_fsecs	fsecs.c	/^void init_fsecs(void)$/;"	f	signature:(void)
+init_fsecs	fsecs.h	/^void init_fsecs(void);$/;"	p	signature:(void)
+init_sampler	fcyc.c	/^static void init_sampler()$/;"	f	file:
+kbest	fcyc.c	/^static int kbest = K;$/;"	v	file:
+lo	mdriver.c	/^    char *lo;              \/* low payload address *\/$/;"	m	struct:range_t	file:	access:public
+main	mdriver.c	/^int main(int argc, char **argv)$/;"	f	signature:(int argc, char **argv)
+malloc_error	mdriver.c	/^static void malloc_error(int tracenum, int opnum, char *msg);$/;"	p	file:	signature:(int tracenum, int opnum, char *msg)
+malloc_error	mdriver.c	/^void malloc_error(int tracenum, int opnum, char *msg)$/;"	f	signature:(int tracenum, int opnum, char *msg)
+maxsamples	fcyc.c	/^static int maxsamples = MAXSAMPLES;$/;"	v	file:
+mem_brk	memlib.c	/^static char *mem_brk;        \/* points to last byte of heap *\/$/;"	v	file:
+mem_deinit	memlib.c	/^void mem_deinit(void)$/;"	f	signature:(void)
+mem_deinit	memlib.h	/^void mem_deinit(void);$/;"	p	signature:(void)
+mem_heap_hi	memlib.c	/^void *mem_heap_hi()$/;"	f
+mem_heap_hi	memlib.h	/^void *mem_heap_hi(void);$/;"	p	signature:(void)
+mem_heap_lo	memlib.c	/^void *mem_heap_lo()$/;"	f
+mem_heap_lo	memlib.h	/^void *mem_heap_lo(void);$/;"	p	signature:(void)
+mem_heapsize	memlib.c	/^size_t mem_heapsize() $/;"	f
+mem_heapsize	memlib.h	/^size_t mem_heapsize(void);$/;"	p	signature:(void)
+mem_init	memlib.c	/^void mem_init(void)$/;"	f	signature:(void)
+mem_init	memlib.h	/^void mem_init(void);               $/;"	p	signature:(void)
+mem_max_addr	memlib.c	/^static char *mem_max_addr;   \/* largest legal heap address *\/ $/;"	v	file:
+mem_pagesize	memlib.c	/^size_t mem_pagesize()$/;"	f
+mem_pagesize	memlib.h	/^size_t mem_pagesize(void);$/;"	p	signature:(void)
+mem_reset_brk	memlib.c	/^void mem_reset_brk()$/;"	f
+mem_reset_brk	memlib.h	/^void mem_reset_brk(void); $/;"	p	signature:(void)
+mem_sbrk	memlib.c	/^void *mem_sbrk(int incr) $/;"	f	signature:(int incr)
+mem_sbrk	memlib.h	/^void *mem_sbrk(int incr);$/;"	p	signature:(int incr)
+mem_start_brk	memlib.c	/^static char *mem_start_brk;  \/* points to first byte of heap *\/$/;"	v	file:
+mhz	clock.c	/^double mhz(int verbose)$/;"	f	signature:(int verbose)
+mhz	clock.h	/^double mhz(int verbose);$/;"	p	signature:(int verbose)
+mhz_full	clock.c	/^double mhz_full(int verbose, int sleeptime)$/;"	f	signature:(int verbose, int sleeptime)
+mhz_full	clock.h	/^double mhz_full(int verbose, int sleeptime);$/;"	p	signature:(int verbose, int sleeptime)
+mm_free	mm.c	/^void mm_free(void *ptr)$/;"	f	signature:(void *ptr)
+mm_free	mm.h	/^extern void mm_free (void *ptr);$/;"	p	signature:(void *ptr)
+mm_init	mm.c	/^int mm_init(void)$/;"	f	signature:(void)
+mm_init	mm.h	/^extern int mm_init (void);$/;"	p	signature:(void)
+mm_malloc	mm.c	/^void *mm_malloc(size_t size)$/;"	f	signature:(size_t size)
+mm_malloc	mm.h	/^extern void *mm_malloc (size_t size);$/;"	p	signature:(size_t size)
+mm_realloc	mm.c	/^void *mm_realloc(void *ptr, size_t size)$/;"	f	signature:(void *ptr, size_t size)
+mm_realloc	mm.h	/^extern void *mm_realloc(void *ptr, size_t size);$/;"	p	signature:(void *ptr, size_t size)
+msg	mdriver.c	/^char msg[MAXLINE];      \/* for whenever we need to compose an error message *\/$/;"	v
+name1	mm.h	/^    char *name1;    \/* full name of first member *\/$/;"	m	struct:__anon6	access:public
+name2	mm.h	/^    char *name2;    \/* full name of second member (if any) *\/$/;"	m	struct:__anon6	access:public
+next	mdriver.c	/^    struct range_t *next;  \/* next list element *\/$/;"	m	struct:range_t	typeref:struct:range_t::range_t	file:	access:public
+num_ids	mdriver.c	/^    int num_ids;         \/* number of alloc\/realloc ids *\/$/;"	m	struct:__anon3	file:	access:public
+num_ops	mdriver.c	/^    int num_ops;         \/* number of distinct requests *\/$/;"	m	struct:__anon3	file:	access:public
+ops	mdriver.c	/^    double ops;      \/* number of ops (malloc\/free\/realloc) in the trace *\/$/;"	m	struct:__anon5	file:	access:public
+ops	mdriver.c	/^    traceop_t *ops;      \/* array of requests *\/$/;"	m	struct:__anon3	file:	access:public
+ovhd	clock.c	/^double ovhd()$/;"	f
+ovhd	clock.h	/^double ovhd();$/;"	p	signature:()
+printresults	mdriver.c	/^static void printresults(int n, stats_t *stats) $/;"	f	file:	signature:(int n, stats_t *stats)
+printresults	mdriver.c	/^static void printresults(int n, stats_t *stats);$/;"	p	file:	signature:(int n, stats_t *stats)
+range_t	mdriver.c	/^typedef struct range_t {$/;"	s	file:
+range_t	mdriver.c	/^} range_t;$/;"	t	typeref:struct:range_t	file:
+range_t::hi	mdriver.c	/^    char *hi;              \/* high payload address *\/$/;"	m	struct:range_t	file:	access:public
+range_t::lo	mdriver.c	/^    char *lo;              \/* low payload address *\/$/;"	m	struct:range_t	file:	access:public
+range_t::next	mdriver.c	/^    struct range_t *next;  \/* next list element *\/$/;"	m	struct:range_t	typeref:struct:range_t::range_t	file:	access:public
+ranges	mdriver.c	/^    range_t *ranges;$/;"	m	struct:__anon4	file:	access:public
+read_trace	mdriver.c	/^static trace_t *read_trace(char *tracedir, char *filename)$/;"	f	file:	signature:(char *tracedir, char *filename)
+read_trace	mdriver.c	/^static trace_t *read_trace(char *tracedir, char *filename);$/;"	p	file:	signature:(char *tracedir, char *filename)
+remove_range	mdriver.c	/^static void remove_range(range_t **ranges, char *lo)$/;"	f	file:	signature:(range_t **ranges, char *lo)
+remove_range	mdriver.c	/^static void remove_range(range_t **ranges, char *lo);$/;"	p	file:	signature:(range_t **ranges, char *lo)
+samplecount	fcyc.c	/^static int samplecount = 0;$/;"	v	file:
+samples	fcyc.c	/^static double *samples = NULL;$/;"	v	file:
+secs	mdriver.c	/^    double secs;     \/* number of secs needed to run the trace *\/$/;"	m	struct:__anon5	file:	access:public
+set_fcyc_cache_block	fcyc.c	/^void set_fcyc_cache_block(int bytes) {$/;"	f	signature:(int bytes)
+set_fcyc_cache_block	fcyc.h	/^void set_fcyc_cache_block(int bytes);$/;"	p	signature:(int bytes)
+set_fcyc_cache_size	fcyc.c	/^void set_fcyc_cache_size(int bytes)$/;"	f	signature:(int bytes)
+set_fcyc_cache_size	fcyc.h	/^void set_fcyc_cache_size(int bytes);$/;"	p	signature:(int bytes)
+set_fcyc_clear_cache	fcyc.c	/^void set_fcyc_clear_cache(int clear)$/;"	f	signature:(int clear)
+set_fcyc_clear_cache	fcyc.h	/^void set_fcyc_clear_cache(int clear);$/;"	p	signature:(int clear)
+set_fcyc_compensate	fcyc.c	/^void set_fcyc_compensate(int compensate_arg)$/;"	f	signature:(int compensate_arg)
+set_fcyc_compensate	fcyc.h	/^void set_fcyc_compensate(int compensate_arg);$/;"	p	signature:(int compensate_arg)
+set_fcyc_epsilon	fcyc.c	/^void set_fcyc_epsilon(double epsilon_arg)$/;"	f	signature:(double epsilon_arg)
+set_fcyc_epsilon	fcyc.h	/^void set_fcyc_epsilon(double epsilon_arg);$/;"	p	signature:(double epsilon_arg)
+set_fcyc_k	fcyc.c	/^void set_fcyc_k(int k)$/;"	f	signature:(int k)
+set_fcyc_k	fcyc.h	/^void set_fcyc_k(int k);$/;"	p	signature:(int k)
+set_fcyc_maxsamples	fcyc.c	/^void set_fcyc_maxsamples(int maxsamples_arg)$/;"	f	signature:(int maxsamples_arg)
+set_fcyc_maxsamples	fcyc.h	/^void set_fcyc_maxsamples(int maxsamples_arg);$/;"	p	signature:(int maxsamples_arg)
+sink	fcyc.c	/^static volatile int sink = 0;$/;"	v	file:
+size	mdriver.c	/^    int size;                         \/* byte size of alloc\/realloc request *\/$/;"	m	struct:__anon1	file:	access:public
+speed_t	mdriver.c	/^} speed_t;$/;"	t	typeref:struct:__anon4	file:
+start_comp_counter	clock.c	/^void start_comp_counter() $/;"	f
+start_comp_counter	clock.h	/^void start_comp_counter();$/;"	p	signature:()
+start_counter	clock.c	/^void start_counter()$/;"	f
+start_counter	clock.h	/^void start_counter();$/;"	p	signature:()
+start_tick	clock.c	/^static clock_t start_tick = 0;$/;"	v	file:
+stats_t	mdriver.c	/^} stats_t; $/;"	t	typeref:struct:__anon5	file:
+sugg_heapsize	mdriver.c	/^    int sugg_heapsize;   \/* suggested heap size (unused) *\/$/;"	m	struct:__anon3	file:	access:public
+team	mm.c	/^team_t team = {$/;"	v
+team_t	mm.h	/^} team_t;$/;"	t	typeref:struct:__anon6
+teamname	mm.h	/^    char *teamname; \/* ID1+ID2 or ID1 *\/$/;"	m	struct:__anon6	access:public
+test_funct	fcyc.h	/^typedef void (*test_funct)(void *);$/;"	t
+trace	mdriver.c	/^    trace_t *trace;  $/;"	m	struct:__anon4	file:	access:public
+trace_t	mdriver.c	/^} trace_t;$/;"	t	typeref:struct:__anon3	file:
+tracedir	mdriver.c	/^static char tracedir[MAXLINE] = TRACEDIR;$/;"	v	file:
+traceop_t	mdriver.c	/^} traceop_t;$/;"	t	typeref:struct:__anon1	file:
+type	mdriver.c	/^    enum {ALLOC, FREE, REALLOC} type; \/* type of request *\/$/;"	m	struct:__anon1	typeref:enum:__anon1::__anon2	file:	access:public
+unix_error	mdriver.c	/^static void unix_error(char *msg);$/;"	p	file:	signature:(char *msg)
+unix_error	mdriver.c	/^void unix_error(char *msg) $/;"	f	signature:(char *msg)
+usage	mdriver.c	/^static void usage(void) $/;"	f	file:	signature:(void)
+usage	mdriver.c	/^static void usage(void);$/;"	p	file:	signature:(void)
+usage	traces/checktrace.pl	/^sub usage $/;"	s
+util	mdriver.c	/^    double util;     \/* space utilization for this trace (always 0 for libc) *\/$/;"	m	struct:__anon5	file:	access:public
+valid	mdriver.c	/^    int valid;       \/* was the trace processed correctly by the allocator? *\/$/;"	m	struct:__anon5	file:	access:public
+values	fcyc.c	/^static double *values = NULL;$/;"	v	file:
+verbose	mdriver.c	/^int verbose = 0;        \/* global flag for verbose output *\/$/;"	v
+weight	mdriver.c	/^    int weight;          \/* weight for this trace (unused) *\/$/;"	m	struct:__anon3	file:	access:public
