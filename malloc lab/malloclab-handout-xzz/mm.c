@@ -241,18 +241,53 @@ void mm_free(void *ptr)
  */
 void *mm_realloc(void *ptr, size_t size)
 {
+	size_t asize;
 	void *oldptr = ptr;
 	void *newptr;
-	size_t copySize;
-	
+
+	/* free */
+	if (0 == size) {
+		free(oldptr);
+		return NULL;
+	}
+
+	if (size <= DSIZE) {
+		asize = 2 * DSIZE;
+	} else {
+		asize = DSIZE * ((size + (DSIZE) + (DSIZE - 1)) / DSIZE);
+	}
+
+	/* 缩小空间 */
+	if (asize <= GET_SIZE(HDRP(oldptr))) {
+		place(oldptr, asize);
+		return oldptr;
+	}
+
+
+	/* 扩大空间, 先检测其前后相邻的块是否满足扩大需求 */
+	if ((!GET_ALLOC(HDRP(NEXT_BLKP(oldptr))) && 
+			GET_SIZE(HDRP(oldptr)) + GET_SIZE(HDRP(NEXT_BLKP(oldptr))) >= asize)
+		|| (!GET_ALLOC(HDRP(PREV_BLKP(ptr))) && 
+			GET_SIZE(HDRP(oldptr)) + GET_SIZE(HDRP(PREV_BLKP(oldptr))) >= asize)
+		|| (!GET_ALLOC(HDRP(PREV_BLKP(oldptr))) && !GET_ALLOC(HDRP(NEXT_BLKP(oldptr))) 
+		&& GET_SIZE(HDRP(oldptr)) + GET_SIZE(HDRP(PREV_BLKP(oldptr))) + GET_SIZE(HDRP((NEXT_BLKP(oldptr)))) >= asize)) {
+
+		PUT(HDRP(oldptr), PACK(GET_SIZE(HDRP(oldptr)), 0));
+		PUT(FTRP(oldptr), PACK(GET_SIZE(HDRP(oldptr)), 0));
+		newptr = coalesce(oldptr);
+		memmove(newptr, oldptr, size);
+		place(newptr, asize);
+
+		return newptr;	
+	}
+
+	/* 从heap的其他地方寻找 */
 	newptr = mm_malloc(size);
-	if (newptr == NULL)
-	  return NULL;
-	copySize = *(size_t *)((char *)oldptr - SIZE_T_SIZE);
-	if (size < copySize)
-	  copySize = size;
-	memcpy(newptr, oldptr, size);
+	if (NULL == newptr)
+		return NULL;
+	memmove(newptr, oldptr, size);
 	mm_free(oldptr);
+
 	return newptr;
 }
 
