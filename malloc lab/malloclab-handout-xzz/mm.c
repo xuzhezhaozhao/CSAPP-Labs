@@ -1,13 +1,10 @@
 /*
- * mm-naive.c - The fastest, least memory-efficient malloc package.
- * 
- * In this naive approach, a block is allocated by simply incrementing
- * the brk pointer.  A block is pure payload. There are no headers or
- * footers.  Blocks are never coalesced or reused. Realloc is
- * implemented directly using mm_malloc and mm_free.
- *
- * NOTE TO STUDENTS: Replace this header comment with your own header
- * comment that gives a high level description of your solution.
+ *  使用 Segregated Fits 算法, 将free block按大小划分到不同的free list中,
+ *  每个free list 的头指针保存在heap最形状的地址中. 本程序一共划分了18个
+ *  list, heap地址的前18个字分别保存18个list的头指针, free block的第一个
+ *  字保存指向list中下一个free block的指针, 第二个字保存指向前一个free 
+ *  block的指针, 所以每个block的最小值为 16 bytes. 每个block有一个header
+ *  和一个footer, 功能与Implicit list算法一样.
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -32,6 +29,7 @@
 #define GET(p) (*(unsigned int *)(p))
 #define PUT(p, val) (*(unsigned int *)(p) = (val))
 
+/* Read and write a pointer at address p */
 #define GET_PTR(p) ((unsigned int *)(long)(GET(p)))
 #define PUT_PTR(p, ptr) (*(unsigned int *)(p) = ((long)ptr))
 
@@ -137,6 +135,9 @@ int mm_init(void)
 	return 0;
 }
 
+/*
+ * 扩展heap的大小
+ */
 void *extend_heap(size_t words)
 {
 	char *bp;
@@ -158,6 +159,9 @@ void *extend_heap(size_t words)
 }
 
 
+/*
+ * 合并free block 
+ */
 void *coalesce(void *bp)
 {
 	size_t prev_alloc = GET_ALLOC(FTRP(PREV_BLKP(bp)));
@@ -192,7 +196,7 @@ void *coalesce(void *bp)
 }
 
 /* 
- * mm_malloc - Allocate a block by incrementing the brk pointer.
+ * mm_malloc - Allocate a block by searching the free list.
  *	 Always allocate a block whose size is a multiple of the alignment.
  */
 void *mm_malloc(size_t size)
@@ -386,7 +390,7 @@ void place(void *bp, size_t asize)
 }
 
 /*
- * mm_free - Freeing a block does nothing.
+ * mm_free - Freeing a block.
  */
 void mm_free(void *ptr)
 {
@@ -399,7 +403,7 @@ void mm_free(void *ptr)
 
 
 /*
- * mm_realloc - Implemented simply in terms of mm_malloc and mm_free
+ * mm_realloc
  */
 void *mm_realloc(void *ptr, size_t size)
 {
@@ -434,6 +438,7 @@ void *mm_realloc(void *ptr, size_t size)
 		mm_free(oldptr);
 
 		return newptr;
+
 	}
 
 
