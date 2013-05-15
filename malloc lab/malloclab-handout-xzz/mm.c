@@ -428,9 +428,10 @@ void *mm_realloc(void *ptr, size_t size)
 		/*insert_list(oldptr);*/
 		/*place(oldptr, asize);*/
 		/*return oldptr;*/
-		mm_free(oldptr);
+		/*mm_free(oldptr);*/
 		newptr = mm_malloc(size);
 		memmove(newptr, oldptr, size);
+		mm_free(oldptr);
 
 		return newptr;
 	}
@@ -444,13 +445,14 @@ void *mm_realloc(void *ptr, size_t size)
 		|| (!GET_ALLOC(HDRP(PREV_BLKP(oldptr))) && !GET_ALLOC(HDRP(NEXT_BLKP(oldptr)))
 		&& GET_SIZE(HDRP(oldptr)) + GET_SIZE(HDRP(PREV_BLKP(oldptr))) + GET_SIZE(HDRP((NEXT_BLKP(oldptr)))) >= asize)) {
 
-		PUT(HDRP(oldptr), PACK(GET_SIZE(HDRP(oldptr)), 0));
-		PUT(FTRP(oldptr), PACK(GET_SIZE(HDRP(oldptr)), 0));
-		newptr = coalesce(oldptr);
-		memmove(newptr, oldptr, size);
-		place(newptr, asize);
+		/*PUT(HDRP(oldptr), PACK(GET_SIZE(HDRP(oldptr)), 0));*/
+		/*PUT(FTRP(oldptr), PACK(GET_SIZE(HDRP(oldptr)), 0));*/
+		/*newptr = coalesce(oldptr);*/
+		/*memmove(newptr, oldptr, size);*/
+		/*place(newptr, asize);*/
+		
 
-		return newptr;	
+		/*return newptr;	*/
 	}
 
 	/* 从heap的其他地方寻找 */
