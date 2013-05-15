@@ -47,6 +47,7 @@
 #define NEXT_BLKP(bp) ((char *)(bp) + GET_SIZE(((char *)(bp) - WSIZE)))
 #define PREV_BLKP(bp) ((char *)(bp) - GET_SIZE(((char *)(bp) - DSIZE)))
 
+
 /* 每个free list中块的大小范围 */
 #define SIZE1 (1<<4)
 #define SIZE2 (1<<5)
@@ -164,31 +165,29 @@ void *coalesce(void *bp)
 	size_t size = GET_SIZE(HDRP(bp));
 	
 	if (prev_alloc && next_alloc) { 	/* 前后都分配了  */
-		insert_list(bp);
-		return bp;
+		bp = bp;
 	} else if (prev_alloc && !next_alloc) { 	/* 前分配, 后未分配 */
 		delete_list(NEXT_BLKP(bp));
 		size += GET_SIZE(HDRP(NEXT_BLKP(bp)));
 		PUT(HDRP(bp), PACK(size, 0));
 		PUT(FTRP(bp), PACK(size, 0));
-		insert_list(bp);
 	} else if (!prev_alloc && next_alloc) { 	/* 前未分配, 后分配 */
 		delete_list(PREV_BLKP(bp));
 		size += GET_SIZE(HDRP(PREV_BLKP(bp)));
 		PUT(FTRP(bp), PACK(size, 0));
 		PUT(HDRP(PREV_BLKP(bp)), PACK(size, 0));
 		bp = PREV_BLKP(bp);
-		insert_list(bp);
 	} else { 				/* 前后都未分配 */
 		delete_list(NEXT_BLKP(bp));
 		delete_list(PREV_BLKP(bp));
-		size += GET_SIZE(HDRP(PREV_BLKP(bp))) + 
-			GET_SIZE(FTRP(NEXT_BLKP(bp)));
+		size = size + GET_SIZE(HDRP(PREV_BLKP(bp))) + 
+			GET_SIZE(HDRP(NEXT_BLKP(bp)));
 		PUT(HDRP(PREV_BLKP(bp)), PACK(size, 0));
 		PUT(FTRP(NEXT_BLKP(bp)), PACK(size, 0));
 		bp = PREV_BLKP(bp);
-		insert_list(bp);
 	}
+
+	insert_list(bp);
 	return bp;
 }
 
@@ -270,11 +269,11 @@ void insert_list(void *bp)
 	if (GET_PTR(heap_listp + WSIZE * index) == NULL) {
 		PUT_PTR(heap_listp + WSIZE * index, bp);
 		PUT_PTR(bp, NULL);
-		PUT_PTR(bp + WSIZE, NULL);
+		PUT_PTR((unsigned int *)bp + 1, NULL);
 	} else {
 		PUT_PTR(bp, GET_PTR(heap_listp + WSIZE * index));
-		PUT_PTR(GET_PTR(heap_listp + WSIZE * index) + WSIZE, bp);  	/* 修改前一个位置 */
-		PUT_PTR(bp + WSIZE, NULL);
+		PUT_PTR(GET_PTR(heap_listp + WSIZE * index) + 1, bp);  	/* 修改前一个位置 */
+		PUT_PTR((unsigned int *)bp + 1, NULL);
 		PUT_PTR(heap_listp + WSIZE * index, bp);
 	}
 }
@@ -288,16 +287,20 @@ void delete_list(void *bp)
 	size_t size;
 	size = GET_SIZE(HDRP(bp));
 	index = getListOffset(size);
-	if (GET_PTR(bp) == NULL && GET_PTR(bp + WSIZE) == NULL) {
+	if (GET_PTR(bp) == NULL && GET_PTR((unsigned int *)bp + 1) == NULL) { 
+		/* 链表中唯一结点 */
 		PUT_PTR(heap_listp + WSIZE * index, NULL);
-	} else if (GET_PTR(bp) == NULL && GET_PTR(bp + WSIZE) != NULL) {
-		PUT_PTR(GET_PTR(bp + WSIZE), NULL);
-	} else if (GET_PTR(bp) != NULL && GET_PTR(bp + WSIZE) == NULL){
+	} else if (GET_PTR(bp) == NULL && GET_PTR((unsigned int *)bp + 1) != NULL) {
+		/* 链表中最后一个结点, 不是唯一一个 */
+		PUT_PTR(GET_PTR((unsigned int *)bp + 1), NULL);
+	} else if (GET_PTR(bp) != NULL && GET_PTR((unsigned int *)bp + 1) == NULL){
+		/* 链表中第一个结点, 不是唯一一个 */
 		PUT_PTR(heap_listp + WSIZE * index, GET_PTR(bp));
-		PUT_PTR(GET_PTR(bp) + WSIZE, NULL);
-	} else if (GET_PTR(bp) != NULL && GET_PTR(bp + WSIZE) != NULL) {
-		PUT_PTR(GET_PTR(bp + WSIZE), GET_PTR(bp));
-		PUT_PTR(GET_PTR(bp) + WSIZE, GET_PTR(bp + WSIZE));
+		PUT_PTR(GET_PTR(bp) + 1, NULL);
+	} else if (GET_PTR(bp) != NULL && GET_PTR((unsigned int *)bp + 1) != NULL) {
+		/* 链表中的中间结点 */
+		PUT_PTR(GET_PTR((unsigned int *)bp + 1), GET_PTR(bp));
+		PUT_PTR(GET_PTR(bp) + 1, GET_PTR((unsigned int*)bp + 1));
 	}
 
 }
@@ -313,7 +316,7 @@ void *find_fit(size_t asize)
 	ptr = GET_PTR(heap_listp + 4 * index);
 	while (ptr != NULL) {
 		if (GET_SIZE(HDRP(ptr)) >= asize) {
-			return ptr;
+			return (void *)ptr;
 		}
 		ptr = GET_PTR(ptr);
 	}
@@ -377,6 +380,7 @@ void *mm_realloc(void *ptr, size_t size)
 
 	/* 缩小空间 */
 	if (asize <= GET_SIZE(HDRP(oldptr))) {
+		insert_list(oldptr);
 		place(oldptr, asize);
 		return oldptr;
 	}
