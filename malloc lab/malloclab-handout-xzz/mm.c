@@ -234,26 +234,63 @@ void *mm_malloc(size_t size)
  */
 int getListOffset(size_t size)
 {
-	int n;                                                              
-	int tsize;
-	tsize = size;
-	n = 0;
-	if (0 == tsize) {
+	/*int n;                                                              */
+	/*int tsize;*/
+	/*tsize = size;*/
+	/*n = 0;*/
+	/*if (0 == tsize) {*/
+		/*return 0;*/
+	/*}*/
+	/*while ((tsize = (tsize / 2))) {*/
+	       /*++n;*/
+	/*}   */
+	/*if (size != (1 << n)) {*/
+               /*++n; */
+	/*}   */
+	/*if (n < 4) {*/
+	       /*return 0;*/
+               /*}*/
+	/*if (n > 20) {*/
+		/*return 17;*/
+	/*}*/
+	/*return (n - 4);*/
+	if (size <= SIZE1) {
 		return 0;
-	}
-	while ((tsize = (tsize / 2))) {
-	       ++n;
-	}   
-	if (size != (1 << n)) {
-               ++n; 
-	}   
-	if (n < 4) {
-	       return 0;
-       	}
-	if (n > 20) {
+	} else if (size <= SIZE2) {
+		return 1;
+	} else if (size <= SIZE3) {
+		return 2;
+	} else if (size <= SIZE4) {
+		return 3;
+	} else if (size <= SIZE5) {
+		return 4;
+	} else if (size <= SIZE6) {
+		return 5;
+	} else if (size <= SIZE7) {
+		return 6;
+	} else if (size <= SIZE8) {
+		return 7;
+	} else if (size <= SIZE9) {
+		return 8;
+	} else if (size <= SIZE10) {
+		return 9;
+	} else if (size <= SIZE11) {
+		return 10;
+	} else if (size <= SIZE12) {
+		return 11;
+	} else if (size <= SIZE13) {
+		return 12;
+	} else if (size <= SIZE14) {
+		return 13;
+	} else if (size <= SIZE15) {
+		return 14;
+	} else if (size <= SIZE16) {
+		return 15;
+	} else if (size <= SIZE17) {
+		return 16;
+	} else {
 		return 17;
 	}
-	return (n - 4);
 }
 
 /*
@@ -302,7 +339,6 @@ void delete_list(void *bp)
 		PUT_PTR(GET_PTR((unsigned int *)bp + 1), GET_PTR(bp));
 		PUT_PTR(GET_PTR(bp) + 1, GET_PTR((unsigned int*)bp + 1));
 	}
-
 }
 
 /*
@@ -313,12 +349,17 @@ void *find_fit(size_t asize)
 	int index;
 	index = getListOffset(asize);
 	unsigned int *ptr;
-	ptr = GET_PTR(heap_listp + 4 * index);
-	while (ptr != NULL) {
-		if (GET_SIZE(HDRP(ptr)) >= asize) {
-			return (void *)ptr;
+
+	/* 小的class内找不到就到大的class内找 */
+	while (index < 18) {
+		ptr = GET_PTR(heap_listp + 4 * index);
+		while (ptr != NULL) {
+			if (GET_SIZE(HDRP(ptr)) >= asize) {
+				return (void *)ptr;
+			}
+			ptr = GET_PTR(ptr);
 		}
-		ptr = GET_PTR(ptr);
+		index++;
 	}
 
 	return NULL;
@@ -372,26 +413,35 @@ void *mm_realloc(void *ptr, size_t size)
 		return NULL;
 	}
 
+
 	if (size <= DSIZE) {
 		asize = 2 * DSIZE;
 	} else {
 		asize = DSIZE * ((size + (DSIZE) + (DSIZE - 1)) / DSIZE);
 	}
 
-	/* 缩小空间 */
-	if (asize <= GET_SIZE(HDRP(oldptr))) {
-		insert_list(oldptr);
-		place(oldptr, asize);
+	if (asize == GET_SIZE(HDRP(oldptr))) {
 		return oldptr;
+	}
+	/* 缩小空间 */
+	if (asize < GET_SIZE(HDRP(oldptr))) {
+		/*insert_list(oldptr);*/
+		/*place(oldptr, asize);*/
+		/*return oldptr;*/
+		mm_free(oldptr);
+		newptr = mm_malloc(size);
+		memmove(newptr, oldptr, size);
+
+		return newptr;
 	}
 
 
 	/* 扩大空间, 先检测其前后相邻的块是否满足扩大需求 */
-	if ((!GET_ALLOC(HDRP(NEXT_BLKP(oldptr))) && 
+	if ((!GET_ALLOC(HDRP(NEXT_BLKP(oldptr))) &&
 			GET_SIZE(HDRP(oldptr)) + GET_SIZE(HDRP(NEXT_BLKP(oldptr))) >= asize)
-		|| (!GET_ALLOC(HDRP(PREV_BLKP(ptr))) && 
+		|| (!GET_ALLOC(HDRP(PREV_BLKP(ptr))) &&
 			GET_SIZE(HDRP(oldptr)) + GET_SIZE(HDRP(PREV_BLKP(oldptr))) >= asize)
-		|| (!GET_ALLOC(HDRP(PREV_BLKP(oldptr))) && !GET_ALLOC(HDRP(NEXT_BLKP(oldptr))) 
+		|| (!GET_ALLOC(HDRP(PREV_BLKP(oldptr))) && !GET_ALLOC(HDRP(NEXT_BLKP(oldptr)))
 		&& GET_SIZE(HDRP(oldptr)) + GET_SIZE(HDRP(PREV_BLKP(oldptr))) + GET_SIZE(HDRP((NEXT_BLKP(oldptr)))) >= asize)) {
 
 		PUT(HDRP(oldptr), PACK(GET_SIZE(HDRP(oldptr)), 0));
