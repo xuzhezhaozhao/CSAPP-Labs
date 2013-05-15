@@ -4,37 +4,69 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-ALIGN	mm.c	42;"	d	file:
+ALIGN	mm.c	105;"	d	file:
 ALIGNMENT	config.h	58;"	d
-ALIGNMENT	mm.c	39;"	d	file:
+ALIGNMENT	mm.c	102;"	d	file:
 ALLOC	mdriver.c	/^    enum {ALLOC, FREE, REALLOC} type; \/* type of request *\/$/;"	e	enum:__anon1::__anon2	file:
 AVG_LIBC_THRUPUT	config.h	46;"	d
 CACHE_BLOCK	fcyc.c	24;"	d	file:
 CACHE_BYTES	fcyc.c	23;"	d	file:
 CC	Makefile	/^CC = gcc$/;"	m
 CFLAGS	Makefile	/^CFLAGS = -Wall -O2 -m32$/;"	m
+CHUNKSIZE	mm.c	24;"	d	file:
 CLEAR_CACHE	fcyc.c	22;"	d	file:
 COMPENSATE	fcyc.c	21;"	d	file:
 DEFAULT_TRACEFILES	config.h	24;"	d
+DSIZE	mm.c	23;"	d	file:
 EPSILON	fcyc.c	20;"	d	file:
 FREE	mdriver.c	/^    enum {ALLOC, FREE, REALLOC} type; \/* type of request *\/$/;"	e	enum:__anon1::__anon2	file:
+FTRP	mm.c	44;"	d	file:
+GET	mm.c	32;"	d	file:
+GET_ALLOC	mm.c	40;"	d	file:
+GET_PTR	mm.c	35;"	d	file:
+GET_SIZE	mm.c	39;"	d	file:
 HANDINDIR	Makefile	/^HANDINDIR = \/afs\/cs.cmu.edu\/academic\/class\/15213-f01\/malloclab\/handin$/;"	m
 HDRLINES	mdriver.c	30;"	d	file:
+HDRP	mm.c	43;"	d	file:
 IS_ALIGNED	mdriver.c	34;"	d	file:
 K	fcyc.c	18;"	d	file:
 KEEP_SAMPLES	fcyc.c	41;"	d	file:
 KEEP_VALS	fcyc.c	40;"	d	file:
 LINENUM	mdriver.c	31;"	d	file:
+LISTS_NUM	mm.c	70;"	d	file:
+MAX	mm.c	26;"	d	file:
 MAXLINE	mdriver.c	29;"	d	file:
 MAXSAMPLES	fcyc.c	19;"	d	file:
 MAX_ETIME	ftimer.c	61;"	d	file:
 MAX_HEAP	config.h	63;"	d
 Mhz	fsecs.c	/^static double Mhz;  \/* estimated CPU clock frequency *\/$/;"	v	file:
 NEVENT	clock.c	208;"	d	file:
+NEXT_BLKP	mm.c	47;"	d	file:
 OBJS	Makefile	/^OBJS = mdriver.o mm.o memlib.o fsecs.o fcyc.o clock.o ftimer.o$/;"	m
+PACK	mm.c	29;"	d	file:
+PREV_BLKP	mm.c	48;"	d	file:
+PUT	mm.c	33;"	d	file:
+PUT_PTR	mm.c	36;"	d	file:
 REALLOC	mdriver.c	/^    enum {ALLOC, FREE, REALLOC} type; \/* type of request *\/$/;"	e	enum:__anon1::__anon2	file:
 RECORDTHRESH	clock.c	210;"	d	file:
-SIZE_T_SIZE	mm.c	45;"	d	file:
+SIZE1	mm.c	52;"	d	file:
+SIZE10	mm.c	61;"	d	file:
+SIZE11	mm.c	62;"	d	file:
+SIZE12	mm.c	63;"	d	file:
+SIZE13	mm.c	64;"	d	file:
+SIZE14	mm.c	65;"	d	file:
+SIZE15	mm.c	66;"	d	file:
+SIZE16	mm.c	67;"	d	file:
+SIZE17	mm.c	68;"	d	file:
+SIZE2	mm.c	53;"	d	file:
+SIZE3	mm.c	54;"	d	file:
+SIZE4	mm.c	55;"	d	file:
+SIZE5	mm.c	56;"	d	file:
+SIZE6	mm.c	57;"	d	file:
+SIZE7	mm.c	58;"	d	file:
+SIZE8	mm.c	59;"	d	file:
+SIZE9	mm.c	60;"	d	file:
+SIZE_T_SIZE	mm.c	108;"	d	file:
 TEAM	Makefile	/^TEAM = bovik$/;"	m
 THRESHOLD	clock.c	209;"	d	file:
 TRACEDIR	config.h	15;"	d
@@ -43,6 +75,7 @@ USE_GETTOD	config.h	70;"	d
 USE_ITIMER	config.h	69;"	d
 UTIL_WEIGHT	config.h	53;"	d
 VERSION	Makefile	/^VERSION = 1$/;"	m
+WSIZE	mm.c	22;"	d	file:
 __CONFIG_H_	config.h	2;"	d
 __anon1::ALLOC	mdriver.c	/^    enum {ALLOC, FREE, REALLOC} type; \/* type of request *\/$/;"	e	enum:__anon1::__anon2	file:
 __anon1::FREE	mdriver.c	/^    enum {ALLOC, FREE, REALLOC} type; \/* type of request *\/$/;"	e	enum:__anon1::__anon2	file:
@@ -84,6 +117,8 @@ clear	fcyc.c	/^static void clear()$/;"	f	file:
 clear_cache	fcyc.c	/^static int clear_cache = CLEAR_CACHE;$/;"	v	file:
 clear_ranges	mdriver.c	/^static void clear_ranges(range_t **ranges)$/;"	f	file:	signature:(range_t **ranges)
 clear_ranges	mdriver.c	/^static void clear_ranges(range_t **ranges);$/;"	p	file:	signature:(range_t **ranges)
+coalesce	mm.c	/^static void *coalesce(void *bp);$/;"	p	file:	signature:(void *bp)
+coalesce	mm.c	/^void *coalesce(void *bp)$/;"	f	signature:(void *bp)
 compensate	fcyc.c	/^static int compensate = COMPENSATE;$/;"	v	file:
 counter	clock.c	/^static unsigned int (*counter)(void)= (void *)counterRoutine;$/;"	v	file:
 counterRoutine	clock.c	/^static unsigned int counterRoutine[] =$/;"	v	file:
@@ -91,6 +126,8 @@ cyc_hi	clock.c	/^static unsigned cyc_hi = 0;$/;"	v	file:
 cyc_lo	clock.c	/^static unsigned cyc_lo = 0;$/;"	v	file:
 cyc_per_tick	clock.c	/^static double cyc_per_tick = 0.0;$/;"	v	file:
 default_tracefiles	mdriver.c	/^static char *default_tracefiles[] = {  $/;"	v	file:
+delete_list	mm.c	/^void delete_list(void *bp)$/;"	f	signature:(void *bp)
+delete_list	mm.c	/^void delete_list(void *bp);$/;"	p	file:	signature:(void *bp)
 epsilon	fcyc.c	/^static double epsilon = EPSILON;$/;"	v	file:
 errors	mdriver.c	/^static int errors = 0;  \/* number of errs found when running student malloc *\/$/;"	v	file:
 eval_libc_speed	mdriver.c	/^static void eval_libc_speed(void *ptr)$/;"	f	file:	signature:(void *ptr)
@@ -103,8 +140,12 @@ eval_mm_util	mdriver.c	/^static double eval_mm_util(trace_t *trace, int tracenum
 eval_mm_util	mdriver.c	/^static double eval_mm_util(trace_t *trace, int tracenum, range_t **ranges);$/;"	p	file:	signature:(trace_t *trace, int tracenum, range_t **ranges)
 eval_mm_valid	mdriver.c	/^static int eval_mm_valid(trace_t *trace, int tracenum, range_t **ranges) $/;"	f	file:	signature:(trace_t *trace, int tracenum, range_t **ranges)
 eval_mm_valid	mdriver.c	/^static int eval_mm_valid(trace_t *trace, int tracenum, range_t **ranges);$/;"	p	file:	signature:(trace_t *trace, int tracenum, range_t **ranges)
+extend_heap	mm.c	/^static void *extend_heap(size_t words);$/;"	p	file:	signature:(size_t words)
+extend_heap	mm.c	/^void *extend_heap(size_t words)$/;"	f	signature:(size_t words)
 fcyc	fcyc.c	/^double fcyc(test_funct f, void *argp)$/;"	f	signature:(test_funct f, void *argp)
 fcyc	fcyc.h	/^double fcyc(test_funct f, void* argp);$/;"	p	signature:(test_funct f, void* argp)
+find_fit	mm.c	/^static void *find_fit(size_t asize);$/;"	p	file:	signature:(size_t asize)
+find_fit	mm.c	/^void *find_fit(size_t asize)$/;"	f	signature:(size_t asize)
 first_p	ftimer.c	/^static struct itimerval first_p; \/* prof time*\/$/;"	v	typeref:struct:itimerval	file:
 first_r	ftimer.c	/^static struct itimerval first_r; \/* real time *\/$/;"	v	typeref:struct:itimerval	file:
 first_u	ftimer.c	/^static struct itimerval first_u; \/* user time *\/$/;"	v	typeref:struct:itimerval	file:
@@ -118,6 +159,8 @@ ftimer_gettod	ftimer.h	/^double ftimer_gettod(ftimer_test_funct f, void *argp, i
 ftimer_itimer	ftimer.c	/^double ftimer_itimer(ftimer_test_funct f, void *argp, int n)$/;"	f	signature:(ftimer_test_funct f, void *argp, int n)
 ftimer_itimer	ftimer.h	/^double ftimer_itimer(ftimer_test_funct f, void *argp, int n);$/;"	p	signature:(ftimer_test_funct f, void *argp, int n)
 ftimer_test_funct	ftimer.h	/^typedef void (*ftimer_test_funct)(void *); $/;"	t
+getListOffset	mm.c	/^int getListOffset(size_t size)$/;"	f	signature:(size_t size)
+getListOffset	mm.c	/^int getListOffset(size_t size);$/;"	p	file:	signature:(size_t size)
 get_comp_counter	clock.c	/^double get_comp_counter() $/;"	f
 get_comp_counter	clock.h	/^double get_comp_counter();$/;"	p	signature:()
 get_counter	clock.c	/^double get_counter() $/;"	f
@@ -126,6 +169,7 @@ get_counter	clock.h	/^double get_counter();$/;"	p	signature:()
 get_etime	ftimer.c	/^static double get_etime(void) {$/;"	f	file:	signature:(void)
 get_etime	ftimer.c	/^static double get_etime(void);$/;"	p	file:	signature:(void)
 has_converged	fcyc.c	/^static int has_converged()$/;"	f	file:
+heap_listp	mm.c	/^static char *heap_listp;$/;"	v	file:
 hi	mdriver.c	/^    char *hi;              \/* high payload address *\/$/;"	m	struct:range_t	file:	access:public
 id1	mm.h	/^    char *id1;      \/* login ID of first member *\/$/;"	m	struct:__anon6	access:public
 id2	mm.h	/^    char *id2;      \/* login ID of second member *\/$/;"	m	struct:__anon6	access:public
@@ -135,6 +179,8 @@ init_etime	ftimer.c	/^static void init_etime(void);$/;"	p	file:	signature:(void)
 init_fsecs	fsecs.c	/^void init_fsecs(void)$/;"	f	signature:(void)
 init_fsecs	fsecs.h	/^void init_fsecs(void);$/;"	p	signature:(void)
 init_sampler	fcyc.c	/^static void init_sampler()$/;"	f	file:
+insert_list	mm.c	/^static void insert_list(void *bp);$/;"	p	file:	signature:(void *bp)
+insert_list	mm.c	/^void insert_list(void *bp)$/;"	f	signature:(void *bp)
 kbest	fcyc.c	/^static int kbest = K;$/;"	v	file:
 lo	mdriver.c	/^    char *lo;              \/* low payload address *\/$/;"	m	struct:range_t	file:	access:public
 main	mdriver.c	/^int main(int argc, char **argv)$/;"	f	signature:(int argc, char **argv)
@@ -182,6 +228,8 @@ ops	mdriver.c	/^    double ops;      \/* number of ops (malloc\/free\/realloc) i
 ops	mdriver.c	/^    traceop_t *ops;      \/* array of requests *\/$/;"	m	struct:__anon3	file:	access:public
 ovhd	clock.c	/^double ovhd()$/;"	f
 ovhd	clock.h	/^double ovhd();$/;"	p	signature:()
+place	mm.c	/^static void place(void *bp, size_t asize);$/;"	p	file:	signature:(void *bp, size_t asize)
+place	mm.c	/^void place(void *bp, size_t asize)$/;"	f	signature:(void *bp, size_t asize)
 printresults	mdriver.c	/^static void printresults(int n, stats_t *stats) $/;"	f	file:	signature:(int n, stats_t *stats)
 printresults	mdriver.c	/^static void printresults(int n, stats_t *stats);$/;"	p	file:	signature:(int n, stats_t *stats)
 range_t	mdriver.c	/^typedef struct range_t {$/;"	s	file:

@@ -403,7 +403,7 @@ void mm_free(void *ptr)
 
 
 /*
- * mm_realloc
+ * mm_realloc - 直接用malloc和free组合实现
  */
 void *mm_realloc(void *ptr, size_t size)
 {
@@ -427,38 +427,41 @@ void *mm_realloc(void *ptr, size_t size)
 	if (asize == GET_SIZE(HDRP(oldptr))) {
 		return oldptr;
 	}
+	
 	/* 缩小空间 */
 	if (asize < GET_SIZE(HDRP(oldptr))) {
-		/*insert_list(oldptr);*/
-		/*place(oldptr, asize);*/
-		/*return oldptr;*/
-		/*mm_free(oldptr);*/
 		newptr = mm_malloc(size);
 		memmove(newptr, oldptr, size);
 		mm_free(oldptr);
 
 		return newptr;
-
 	}
 
 
 	/* 扩大空间, 先检测其前后相邻的块是否满足扩大需求 */
-	if ((!GET_ALLOC(HDRP(NEXT_BLKP(oldptr))) &&
-			GET_SIZE(HDRP(oldptr)) + GET_SIZE(HDRP(NEXT_BLKP(oldptr))) >= asize)
-		|| (!GET_ALLOC(HDRP(PREV_BLKP(ptr))) &&
-			GET_SIZE(HDRP(oldptr)) + GET_SIZE(HDRP(PREV_BLKP(oldptr))) >= asize)
-		|| (!GET_ALLOC(HDRP(PREV_BLKP(oldptr))) && !GET_ALLOC(HDRP(NEXT_BLKP(oldptr)))
-		&& GET_SIZE(HDRP(oldptr)) + GET_SIZE(HDRP(PREV_BLKP(oldptr))) + GET_SIZE(HDRP((NEXT_BLKP(oldptr)))) >= asize)) {
-
-		/*PUT(HDRP(oldptr), PACK(GET_SIZE(HDRP(oldptr)), 0));*/
-		/*PUT(FTRP(oldptr), PACK(GET_SIZE(HDRP(oldptr)), 0));*/
-		/*newptr = coalesce(oldptr);*/
-		/*memmove(newptr, oldptr, size);*/
-		/*place(newptr, asize);*/
+	/* 试了之后效果不明显 */
+	/*if (!GET_ALLOC(HDRP(NEXT_BLKP(oldptr))) && GET_ALLOC(HDRP(PREV_BLKP(oldptr))) &&*/
+			/*GET_SIZE(HDRP(oldptr)) + GET_SIZE(HDRP(NEXT_BLKP(oldptr))) >= asize) {*/
+		/*[> 可与后面的块合并 <]*/
+		/*delete_list(NEXT_BLKP(oldptr));*/
+		/*csize = GET_SIZE(HDRP(oldptr)) + GET_SIZE(HDRP(NEXT_BLKP(oldptr)));*/
+		/*PUT(HDRP(oldptr), PACK(csize, 0));	*/
+		/*PUT(FTRP(oldptr), PACK(csize, 0));*/
+		/*newptr = oldptr;*/
+		/*if ((csize - asize) >= (2 * DSIZE)) {*/
+			/*PUT(HDRP(oldptr), PACK(asize, 1));	*/
+			/*PUT(FTRP(oldptr), PACK(asize, 1));*/
+		/*oldptr = NEXT_BLKP(oldptr);*/
+		/*PUT(HDRP(oldptr), PACK(csize - asize, 0));*/
+		/*PUT(FTRP(oldptr), PACK(csize - asize, 0));*/
+		/*insert_list(oldptr);*/
+		/*} else {*/
+			/*PUT(HDRP(oldptr), PACK(csize, 1));*/
+			/*PUT(FTRP(oldptr), PACK(csize, 1));*/
+		/*}*/
 		
-
-		/*return newptr;	*/
-	}
+		/*return newptr;*/
+	/*}*/
 
 	/* 从heap的其他地方寻找 */
 	newptr = mm_malloc(size);
