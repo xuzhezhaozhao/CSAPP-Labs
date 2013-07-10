@@ -1,6 +1,6 @@
 /*
  *  使用 Segregated Fits 算法, 将free block按大小划分到不同的free list中,
- *  每个free list 的头指针保存在heap最形状的地址中. 本程序一共划分了18个
+ *  每个free list 的头指针保存在heap最开始的地址中. 本程序一共划分了18个
  *  list, heap地址的前18个字分别保存18个list的头指针, free block的第一个
  *  字保存指向list中下一个free block的指针, 第二个字保存指向前一个free 
  *  block的指针, 所以每个block的最小值为 16 bytes. 每个block有一个header
